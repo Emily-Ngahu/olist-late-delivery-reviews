@@ -1,0 +1,5 @@
+delay_band,orders,avg_score,pct_bad_reviews
+1. On time or early,88194,4.31,8.7
+2. 1-3 days late,1846,3.3,32.1
+3. 4-7 days late,1742,2.11,67.5
+4. 8+ days late,2781,1.7,79.2
