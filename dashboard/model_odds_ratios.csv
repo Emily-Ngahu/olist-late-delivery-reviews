@@ -1,4 +1,4 @@
-,odds_ratio,ci_low,ci_high,p_value
+term,odds_ratio,ci_low,ci_high,p_value
 Intercept,0.034,0.017,0.069,0.0
 "C(delay_band, Treatment('on_time'))[T.late_1_3]",4.899,4.425,5.423,0.0
 "C(delay_band, Treatment('on_time'))[T.late_4_7]",21.492,19.359,23.859,0.0

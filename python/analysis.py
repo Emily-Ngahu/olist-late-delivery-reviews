@@ -49,7 +49,7 @@ or_table = pd.DataFrame({"odds_ratio": np.exp(model.params),
 delay_rows = or_table[or_table.index.str.contains("delay_band")]
 print("\nOdds ratios for delay (vs on time), controlling for distance, freight, price, category, state:")
 print(delay_rows)
-or_table.to_csv("dashboard/model_odds_ratios.csv")
+or_table.to_csv("dashboard/model_odds_ratios.csv", index_label="term")
 
 # 3. Counterfactual: how many bad reviews would on-time delivery have avoided?
 late = df[df["delay_band"] != "on_time"].copy()
