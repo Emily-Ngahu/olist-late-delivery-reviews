@@ -2,7 +2,7 @@
 
 **[View the live dashboard](https://datastudio.google.com/reporting/ce8ecbfe-ef2d-4d99-a470-be971c6401d8)** · [PDF copy of the report](Report/Olist_Report.pdf)
 
-> **Finding in one sentence:** late deliveries are only **6.7%** of Olist orders but account for **34%** of all bad reviews, and the damage escalates quickly with delay. Even so, **two thirds of bad reviews come from orders that arrived on time**, so delivery is a big part of the problem, not all of it.
+> **Finding:** late deliveries are only **6.7%** of Olist orders but account for **34%** of all bad reviews, and the damage escalates quickly with delay. Even so, **two thirds of bad reviews come from orders that arrived on time**, so delivery is a big part of the problem, not all of it.
 
 ## The problem
 A marketplace's review scores are falling and the founders suspect poor sellers. Before money goes on seller-quality programmes, three questions need answers:
@@ -21,7 +21,6 @@ A "bad review" is a score of 1 or 2. An order is "late" if it was delivered afte
 2. **Python (statsmodels)** fits a logistic regression for bad reviews with delay band, distance, freight ratio, price, category and customer state, and estimates how many bad reviews on-time delivery would have avoided.
 3. **A [Data Studio dashboard](https://datastudio.google.com/reporting/ce8ecbfe-ef2d-4d99-a470-be971c6401d8)** is built from the summary tables in `dashboard/`.
 
-All SQL is written for **MySQL 8.0** (`sql_mysql/`).
 
 ## Key findings
 | | |
