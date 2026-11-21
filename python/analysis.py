@@ -1,6 +1,5 @@
 """Does late delivery drive bad reviews, once we control for other things?
 
-Run from the project folder after the SQL steps:   python python/analysis.py
 Reads the order_facts table from the MySQL database "olist", fits a logistic regression,
 and prints/saves the numbers used in the README and dashboard.
 """
@@ -16,6 +15,7 @@ from db import connect_mysql
 Path("dashboard").mkdir(exist_ok=True)
 warnings.filterwarnings("ignore", message=".*pandas only supports SQLAlchemy.*")
 df = pd.read_sql("SELECT * FROM order_facts", connect_mysql())
+
 # MySQL returns exact decimals; turn everything the model needs into plain numbers
 for col in ["item_value", "freight_value", "freight_ratio", "review_score", "distance_km",
             "days_vs_estimate", "days_to_deliver", "is_late", "is_bad_review"]:
@@ -28,6 +28,7 @@ df["delay_band"] = pd.cut(
     labels=["on_time", "late_1_3", "late_4_7", "late_8_plus"])
 df["is_bad_review"] = df["is_bad_review"].astype(int)
 df["log_distance"] = np.log1p(df["distance_km"])
+
 # keep the 15 biggest categories, lump the rest, so the model stays readable
 top = df["category"].value_counts().head(15).index
 df["category_grp"] = np.where(df["category"].isin(top), df["category"], "other")
