@@ -1,5 +1,7 @@
 # Why do marketplace customers leave bad reviews?
 
+**[View the live dashboard](https://datastudio.google.com/reporting/ce8ecbfe-ef2d-4d99-a470-be971c6401d8)** · [PDF copy of the report](Report/Olist_Report.pdf)
+
 > **Finding in one sentence:** late deliveries are only **6.7%** of Olist orders but account for **34%** of all bad reviews, and the damage escalates quickly with delay. Even so, **two thirds of bad reviews come from orders that arrived on time**, so delivery is a big part of the problem, not all of it.
 
 ## The problem
@@ -17,7 +19,7 @@ A "bad review" is a score of 1 or 2. An order is "late" if it was delivered afte
 ## Approach
 1. **SQL** builds one clean row per order (`order_facts`): delivered orders with a single seller and a review, with days late, route, product category and seller-to-customer distance. 94,563 of 99,441 orders qualify. Six queries then answer the questions above using CTEs, window functions (`RANK`, rolling averages, running totals) and conditional aggregation.
 2. **Python (statsmodels)** fits a logistic regression for bad reviews with delay band, distance, freight ratio, price, category and customer state, and estimates how many bad reviews on-time delivery would have avoided.
-3. **A Data Studio dashboard** is built from the summary tables in `dashboard/`.
+3. **A [Data Studio dashboard](https://datastudio.google.com/reporting/ce8ecbfe-ef2d-4d99-a470-be971c6401d8)** is built from the summary tables in `dashboard/`.
 
 All SQL is written for **MySQL 8.0** (`sql_mysql/`).
 
@@ -50,6 +52,7 @@ All SQL is written for **MySQL 8.0** (`sql_mysql/`).
 sql_mysql/      MySQL 8.0: load, order_facts, analysis, export, plus README_MYSQL.md (Workbench guide)
 python/         data prep, MySQL loader and exporter, regression (analysis.py)
 dashboard/      summary tables that feed the dashboard
+Report/         PDF copy of the Data Studio dashboard
 ```
 
 ## How to reproduce
